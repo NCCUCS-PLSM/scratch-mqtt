@@ -1,4 +1,4 @@
-{	"extensionName": "Scala DSL on WISI Platform",
+{	"extensionName": "Scala DSL on WISE Platform",
 	"extensionPort": 12345,
 	"blockSpecs": [
 		[" ", "手舉 %n 度", "raiseHand", 90],

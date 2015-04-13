@@ -13,18 +13,20 @@ public class MqttListener implements MqttCallback
     @Override
     public void connectionLost(Throwable arg0)
     {
+        System.out.println("connection lost: " + arg0.toString());
         // do nothing
     }
 
     @Override
     public void deliveryComplete(IMqttDeliveryToken arg0)
     {
+        System.out.println("delivery complete: " + arg0.toString());
         // do nothing
     }
 
     @Override
     public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception
     {
-        System.out.println(mqttMessage.toString());
+        System.out.println("arrived message: " + mqttMessage.toString());
     }
 }

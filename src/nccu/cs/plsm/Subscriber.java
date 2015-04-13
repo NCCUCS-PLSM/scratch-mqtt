@@ -13,7 +13,7 @@ public class Subscriber {
 
     public static void main(String[] args)
     {
-        String clientId = "veck";
+        String clientId = "sub";
         MemoryPersistence persistence = new MemoryPersistence();
         try
         {
@@ -30,7 +30,22 @@ public class Subscriber {
             System.out.println("Subscribing to topic \"" + topicName + "\" QoS " + 0);
             IMqttToken subToken = sampleClient.subscribe(topicName, 0, null, null);
             subToken.waitForCompletion();
-            System.out.println("Subscribed to topic \"" + topicName);
+            System.out.println("Subscribed to topic \"" + topicName + "\"");
+
+            // continue waiting for messages until the Enter is pressed
+            System.out.println("Press <Enter> to exit");
+            try
+            {
+                System.in.read();
+            }
+            catch (Exception e)
+            {
+            // If we can't read we'll just exit
+            }
+
+            // disconnect
+            sampleClient.disconnect();
+            System.out.println("Disconnected");
 
         }
         catch (Exception ex)

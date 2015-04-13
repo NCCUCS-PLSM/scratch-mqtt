@@ -96,7 +96,7 @@ public class ScratchPublisher {
     }
 
     private static void publishToBroker(String cmd){
-        String clientId = "veck";
+        String clientId = "pub";
         MemoryPersistence persistence = new MemoryPersistence();
         try
         {
@@ -109,10 +109,12 @@ public class ScratchPublisher {
             // prepare a message
             String content = cmd;
             System.out.println("Publishing message: " + content);
-            MqttMessage message = new MqttMessage(content.getBytes());
+            MqttMessage message = new MqttMessage();
+            message.setPayload(content.getBytes());
+            System.out.println(message.toString());
             message.setQos(0);// set QoS level to 0
 
-            // publish a message to a Topic: "testtopic"
+            // publish a message to a Topic: "testScratch"
             sampleClient.publish("testScratch", message);
             System.out.println("Message published");
 
